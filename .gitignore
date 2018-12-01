@@ -1,0 +1,7 @@
+#Ignore
+target/
+
+# Generated for STS.
+.settings/
+.project
+.classpath
