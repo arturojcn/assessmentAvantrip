@@ -1,6 +1,7 @@
 package ar.com.avantrip.controller;
 
 
+import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,13 @@ public class FraudulentFlightController {
 	private FraudulentFlightService fraudulentFlighService;
 
 	@PostMapping(value="fraudulent")
-	public ResponseEntity<Boolean> fraudulentFlight(@RequestBody FraudulentFlightRequest request) {
+	public ResponseEntity<Boolean> fraudulentFlight(@RequestBody FraudulentFlightRequest request) throws SQLException {
 		logger.info("fraudulentFlight()");
 		return new ResponseEntity<Boolean>(fraudulentFlighService.fraudFlight(request), HttpStatus.OK);
 	}
 	
-
 	@PostMapping(value="scoring")
-	public ResponseEntity<Integer> scoringFlight(@RequestBody FraudulentFlightRequest request) {
+	public ResponseEntity<Integer> scoringFlight(@RequestBody FraudulentFlightRequest request) throws SQLException {
 		logger.info("scoringFlight()");		
 		return new ResponseEntity<Integer>(fraudulentFlighService.calculateScoring(request), HttpStatus.OK);
 	}
