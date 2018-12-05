@@ -48,4 +48,9 @@ public class ConfigController {
 		return new ResponseEntity<Iterable<RulesResquest>>(rulesService.saveRule(ruleRequest), HttpStatus.OK);
 	}
 	
+	@PutMapping(value="rules")
+	public ResponseEntity<Iterable<RulesResquest>> UpdateRules(@RequestBody Iterable<RulesResquest> ruleRequest){
+		return new ResponseEntity<Iterable<RulesResquest>>(rulesService.saveRule(ruleRequest), HttpStatus.OK);
+	}
+	
 }
