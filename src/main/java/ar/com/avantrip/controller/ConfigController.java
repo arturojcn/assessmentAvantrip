@@ -18,6 +18,7 @@ import ar.com.avantrip.binding.RulesResquest;
 import ar.com.avantrip.binding.ScoreResquest;
 import ar.com.avantrip.service.RulesService;
 import ar.com.avantrip.service.ScoreService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/config", consumes = { MediaType.APPLICATION_JSON_UTF8_VALUE }, produces = {
@@ -31,23 +32,27 @@ public class ConfigController {
 	@Autowired
 	private RulesService rulesService;
 	
+	@ApiOperation(value="Return an Entity score that was modifed", notes="This method update the configuration of score and maxScoreFraud")
 	@PutMapping(value="score")
 	public ResponseEntity<ScoreResquest> updateScore(@RequestBody ScoreResquest score){
 		logger.info("updateScore()");
 		return new ResponseEntity<ScoreResquest>(scoreService.updateScore(score), HttpStatus.OK);
 	}
-	
+
+	@ApiOperation(value="Return an list of rules for calculate scoring the flight buy", notes="This method list all rules that were almacenatedd")
 	@GetMapping(value="rules")
 	public ResponseEntity<Iterable<RulesResquest>> listRules(){
 		logger.info("listRules");
 		return new ResponseEntity<Iterable<RulesResquest>>(rulesService.listAllRules(), HttpStatus.OK);
 	}
 
+	@ApiOperation(value="Return an list of rules that was saved for calculate scoring the flight buy", notes="This method save one or a list of the rules that will aplicate for calculate of scoring of flight buy")
 	@PostMapping(value="rules")
 	public ResponseEntity<Iterable<RulesResquest>> saveRules(@RequestBody Iterable<RulesResquest> ruleRequest){
 		return new ResponseEntity<Iterable<RulesResquest>>(rulesService.saveRule(ruleRequest), HttpStatus.OK);
 	}
-	
+
+	@ApiOperation(value="Return an list of rules that was modified for calculate scoring the flight buy", notes="This method update one or a list of the rules that will aplicate for calculate of scoring of flight buy")
 	@PutMapping(value="rules")
 	public ResponseEntity<Iterable<RulesResquest>> UpdateRules(@RequestBody Iterable<RulesResquest> ruleRequest){
 		return new ResponseEntity<Iterable<RulesResquest>>(rulesService.saveRule(ruleRequest), HttpStatus.OK);

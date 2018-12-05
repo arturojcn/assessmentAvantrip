@@ -27,11 +27,11 @@ public class SwaggerConfiguration {
 	 
 	 private ApiInfo getApiInfo() {
 		    return new ApiInfo(
-		            "TITLE",
-		            "DESCIPRION",
-		            "VERSION",
+		            "Avantrip API-REST Service",
+		            "API-REST service that determine if the buy of a flight is Fraudulent or not",
+		            "1.0",
 		            "TERMS OF SERVICE URL",
-		            new Contact("NAME","URL","EMAIL"),
+		            new Contact("Arturo","URL","Arturojcn8@gmail.com"),
 		            "LICENSE",
 		            "LICENSE URL",
 		            Collections.emptyList()
