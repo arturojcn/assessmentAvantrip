@@ -8,7 +8,7 @@ public class PayementResquest {
 	
 	private PersonRequest titularDetail;
 	
-	private Long cardNumberFront;
+	private String cardNumberFront;
 	
 	private int cardNumberCVC;
 	
@@ -55,14 +55,14 @@ public class PayementResquest {
 	/**
 	 * @return the cardNumberFront
 	 */
-	public Long getCardNumberFront() {
+	public String getCardNumberFront() {
 		return cardNumberFront;
 	}
 
 	/**
 	 * @param cardNumberFront the cardNumberFront to set
 	 */
-	public void setCardNumberFront(Long cardNumberFront) {
+	public void setCardNumberFront(String cardNumberFront) {
 		this.cardNumberFront = cardNumberFront;
 	}
 

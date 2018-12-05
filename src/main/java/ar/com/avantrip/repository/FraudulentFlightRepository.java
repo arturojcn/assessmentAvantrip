@@ -1,9 +1,10 @@
 package ar.com.avantrip.repository;
 
+import java.sql.SQLException;
+
 import org.springframework.stereotype.Service;
 
 import ar.com.avantrip.binding.FraudulentFlightRequest;
-import ar.com.avantrip.binding.PayementResquest;
 
 @Service
 public interface FraudulentFlightRepository {
@@ -12,5 +13,5 @@ public interface FraudulentFlightRepository {
 	 
 	Integer calculateScoring(FraudulentFlightRequest request);
 	
-	boolean blackList(PayementResquest paymentRequest);
+	boolean isBlackList(String cardNumber) throws SQLException;
 }

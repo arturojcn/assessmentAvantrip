@@ -17,7 +17,7 @@ public class ScoreService {
 	@Autowired
 	private ScoreRepository scoreRepository;
 
-	public int findScore(){
+	public ScoreResquest findScore(){
 		logger.info("findScore()");
 		ScoreResquest scoreResquest = new ScoreResquest();
 		try {
@@ -26,7 +26,7 @@ public class ScoreService {
 			logger.severe(e.getMessage());
 			throw new RuntimeException("No se encontro Score configurado");
 		}
-		return scoreResquest.getScore();
+		return scoreResquest;
 	}
 	
 	public ScoreResquest updateScore(ScoreResquest score) {

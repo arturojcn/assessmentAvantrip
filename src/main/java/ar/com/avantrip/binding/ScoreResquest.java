@@ -16,14 +16,17 @@ public class ScoreResquest {
 	
 	private int score;
 	
+	private int scoreMaxFraud;
+	
 	private Date creationDate; 
 	
 
 	public ScoreResquest() {
 	}
 
-	public ScoreResquest(int score) {
+	public ScoreResquest(int score, int scoreMaxFraud) {
 		this.score = score;
+		this.scoreMaxFraud = scoreMaxFraud;
 		this.creationDate = new Date();
 	}
 	
@@ -42,8 +45,15 @@ public class ScoreResquest {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
 
+
+	public int getScoreMaxFraud() {
+		return scoreMaxFraud;
+	}
+
+	public void setScoreMaxFraud(int scoreMaxFraud) {
+		this.scoreMaxFraud = scoreMaxFraud;
+	}
 
 	public Date getCreationDate() {
 		return creationDate;

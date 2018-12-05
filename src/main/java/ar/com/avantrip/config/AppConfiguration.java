@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import ar.com.avantrip.binding.BlacklistCardRequest;
 import ar.com.avantrip.binding.RulesResquest;
 import ar.com.avantrip.binding.ScoreResquest;
+import ar.com.avantrip.repository.BlacklistRepository;
 import ar.com.avantrip.repository.RulesRepository;
 import ar.com.avantrip.repository.ScoreRepository;
 
@@ -25,9 +27,9 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
 	}
 	
 	@Bean
-	public CommandLineRunner dbRun(ScoreRepository scoreRepository, RulesRepository rulesRepository) {
+	public CommandLineRunner dbRun(ScoreRepository scoreRepository, RulesRepository rulesRepository, BlacklistRepository blackListRepository) {
 		return (arg) -> {
-			scoreRepository.save(new ScoreResquest(60));
+			scoreRepository.save(new ScoreResquest(60, 100));
 			rulesRepository.save(new RulesResquest(
 					"total de la compra",
 					"Verifica si el total de la compra supera los 50.000,00 pesos A$R",
@@ -44,6 +46,10 @@ public class AppConfiguration extends WebMvcConfigurerAdapter {
 					"fraudulentFlightRequest.setScoring(40)",
 					true)
 				);
+			blackListRepository.save(new BlacklistCardRequest(
+					"9632514784563",
+					911,
+					1));
 		};
 	}
 	
